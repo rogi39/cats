@@ -29,3 +29,30 @@ function fadeOut(el, timeout) {
 		el.style.display = 'none';
 	}, timeout);
 }
+
+
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".tab-content");
+
+for (let i = 0; i < tabs.length; i++) {
+	tabs[i].addEventListener("click", (event) => {
+		event.preventDefault();
+		let tabsChildren = event.currentTarget.parentElement.children;
+		for (let t = 0; t < tabsChildren.length; t++) {
+			tabsChildren[t].classList.remove("active");
+		}
+		tabs[i].classList.add("active");
+		let tabContentChildren = event.currentTarget.parentElement.nextElementSibling.children;
+		console.log(event.currentTarget.parentElement.nextElementSibling.children);
+		for (let c = 0; c < tabContentChildren.length; c++) {
+			tabContentChildren[c].classList.remove("active");
+		}
+		contents[i].classList.add("active");
+	});
+}
+
+document.querySelectorAll('.simple-bar').forEach(el => {
+	new SimpleBar(el, {
+		autoHide: false,
+	});
+});
