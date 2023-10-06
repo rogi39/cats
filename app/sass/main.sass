@@ -243,10 +243,16 @@ img
 		padding-top: 0
 		margin-top: 0
 		padding-bottom: 0
-	&_heroes
+	&_heroes, &_team
 		background-image: url('../images/dest/stars.png')
 		background-repeat: no-repeat
 		background-size: cover
+	&_how
+		background: url(../images/dest/stars.png) center no-repeat,url(../images/dest/Star.png) bottom center no-repeat #57358a
+		background-size: cover, contain
+		+media-breakpoint-up(sm)
+			background: url('../images/dest/stars.png') center no-repeat, url('../images/dest/Star.png') top center no-repeat $fiolet
+			background-size: cover, auto
 
 .container
 	padding: 0 10px
@@ -398,7 +404,7 @@ img
 	font-family: Seymour One, snas-serif
 	padding: 6px 10px
 	border-radius: 40px
-	display: flex
+	display: inline-flex
 	align-items: center
 	justify-content: center
 	transition: background-color .35s ease-out, color .35s ease-out, box-shadow .35s ease-out
@@ -474,11 +480,19 @@ img
 	font-family: Seymour One
 	margin-bottom: 16px
 	text-align: center
-	+media-breakpoint-up(sm)
-		font-size: 40px
+	+media-breakpoint-up(md)
+		font-size: 28px
 		margin-bottom: 24px
+	+media-breakpoint-up(lg)
+		font-size: 32px
+	+media-breakpoint-up(xl)
+		font-size: 40px
 	&_fiolet
 		color: $fiolet
+
+.subtitle
+	margin-bottom: 48px
+	text-align: center
 
 .tab-content
 	display: none
@@ -552,6 +566,114 @@ img
 			padding: 0 12px
 			flex: 1
 			min-width: 1px
+
+.how
+	/* .how__block */
+	&__block
+	/* .how__row */
+	&__row
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		+media-breakpoint-up(sm)
+			margin: 0 -8px
+		+media-breakpoint-up(md)
+			flex-wrap: nowrap
+	/* .how__col */
+	&__col
+		flex: 0 0 100%
+		margin-bottom: 16px
+		+media-breakpoint-up(sm)
+			margin-bottom: 0
+			flex: 0 0 50%
+			padding: 0 8px
+		+media-breakpoint-up(md)
+			flex: 0 0 20%
+	/* .how__images */
+	&__images
+		position: absolute
+		bottom: -10px
+		max-width: 145px
+		+media-breakpoint-up(sm)
+			max-width: 205px
+		+media-breakpoint-up(lg)
+			max-width: 255px
+	/* .how__dog */
+	&__dog
+		left: calc(42% - 145px)
+		+media-breakpoint-up(sm)
+			left: calc(42% - 255px)
+	/* .how__cat */
+	&__cat
+		right: calc(42% - 145px)
+		+media-breakpoint-up(sm)
+			right: calc(42% - 255px)
+	/* .how__btn-row */
+	&__btn-row
+		text-align: center
+		position: relative
+		margin-top: 60px
+		+media-breakpoint-up(sm)
+			margin-top: 0
+		+media-breakpoint-up(xl)
+			top: 100px
+	/* .how__btn-arrow */
+	&__btn-arrow
+		position: absolute
+	&__btn-arrow_1
+		position: absolute
+		top: -110px
+		left: calc(50% - 140px)
+	&__btn-arrow_2
+		position: absolute
+		top: -80px
+		right: calc(50% - 100px)
+
+.how-star
+	max-width: 265px
+	margin: 0 auto
+	&_3
+	&_2, &_4
+		+media-breakpoint-up(md)
+			margin-top: 20px
+		+media-breakpoint-up(lg)
+			margin-top: 40px
+	&_1, &_5
+		+media-breakpoint-up(md)
+			margin-top: 40px
+		+media-breakpoint-up(lg)
+			margin-top: 150px
+		+media-breakpoint-up(wxp)
+			margin-top: 200px
+	/* .how-star__step */
+	&__step
+		background-image: url('../images/dest/step.svg')
+		background-repeat: no-repeat
+		height: 134px
+		width: 118px
+		display: flex
+		align-items: center
+		justify-content: center
+		color: #fff
+		font-family: Seymour One
+		font-size: 24px
+		line-height: 28px
+		text-align: center
+		margin: 0 auto
+		margin-bottom: 16px
+		+media-breakpoint-up(xl)
+			margin-bottom: 32px
+	/* .how-star__text */
+	&__text
+		font-size: 14px
+		line-height: 26px
+		color: #fff
+		text-align: center
+		+media-breakpoint-up(sm)
+			font-size: 16px
+		+media-breakpoint-up(xl)
+			font-size: 18px
+			line-height: 28px
 
 @keyframes "fade"
 	from
