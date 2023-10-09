@@ -225,9 +225,82 @@
 				</div>
 			</div>
 		</section>
-		<section class="section section_fiolet">
+		<section class="section section_fiolet section_pick pick">
 			<div class="container">
-				<h2 class="title">За чью команду играешь ты?</h2>
+				<h2 class="title title_vs">За чью команду играешь ты?</h2>
+				<div class="subtitle subtitle_white">Помоги коту Амиго или собаке Мире добраться до цели ПЕРВЫМ!</div>
+				<div class="pick__block">
+					<div class="pick__row">
+						<div class="pick__col">
+							<div class="pick-item">
+								<div class="pick-item__volume-block">
+									<div class="pick-item__volume">
+										<div class="pick-item__volume-load" style="height: 30%;"></div>
+									</div>
+									<div class="pick-item__volume-target">- Цель 7 т корма для котов</div>
+								</div>
+								<a href="#" class="pick-item__btn btn btn_yellow btn_coin-left" data-for="cats"><span class="btn__span">За котов</span></a>
+								<img src="images/dest/cat_mirror.png" alt="За котов" class="pick-item__img">
+							</div>
+						</div>
+						<div class="pick__col">
+							<div class="pick-item pick-item_dog">
+								<div class="pick-item__volume-block">
+									<div class="pick-item__volume-target">- Цель 7 т корма для собак</div>
+									<div class="pick-item__volume">
+										<div class="pick-item__volume-load" style="height: 50%;"></div>
+									</div>
+								</div>
+								<a href="#" class="pick-item__btn btn btn_fiolet btn_coin-right" data-for="dogs"><span class="btn__span">За собак</span></a>
+								<img src="images/dest/dog_mirror.png" alt="За собак" class="pick-item__img">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pick__modal">
+				<div class="pick__modal-close"></div>
+				<div class="pick__modal-title">Подарить корм</div>
+				<form class="pick__form">
+					<div class="pick__form-radio-row">
+						<label class="pick__form-label">
+							<input type="radio" name="count" class="pick__form-label-radio" value="1 кг">
+							<span class="pick__form-label-span">1 кг</span>
+						</label>
+						<label class="pick__form-label">
+							<input type="radio" name="count" class="pick__form-label-radio" value="3 кг" checked>
+							<span class="pick__form-label-span">3 кг</span>
+						</label>
+						<label class="pick__form-label">
+							<input type="radio" name="count" class="pick__form-label-radio" value="5 кг">
+							<span class="pick__form-label-span">5 кг</span>
+						</label>
+						<label class="pick__form-label">
+							<input type="radio" name="count" class="pick__form-label-radio" value="10 кг">
+							<span class="pick__form-label-span">10 кг</span>
+						</label>
+						<label class="pick__form-label">
+							<input type="radio" name="count" class="pick__form-label-radio" value="30 кг">
+							<span class="pick__form-label-span">30 кг</span>
+						</label>
+						<label class="pick__form-label">
+							<input type="radio" name="count" class="pick__form-label-radio" value="Другая сумма">
+							<span class="pick__form-label-span">Другая сумма</span>
+						</label>
+					</div>
+					<input type="text" name="name" class="pick__form-input" placeholder="Ваше имя*">
+					<input type="text" name="email" class="pick__form-input" placeholder="Ваш email*">
+					<input type="hidden" name="for">
+					<div class="pick__form-input-row">
+						<input type="text" name="sum" class="pick__form-input pick__form-input_sum" placeholder="Другая сумма (от 300 руб.)">
+						<button class="btn btn_yellow btn_form"><span class="btn__span">Подарить корм</span></button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<section class="section section_qa">
+			<div class="container">
+				<h2 class="title title_fiolet">Ответы - вопросы</h2>
 			</div>
 		</section>
 	</main>

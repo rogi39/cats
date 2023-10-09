@@ -31,6 +31,47 @@ function fadeOut(el, timeout) {
 }
 
 
+let pickModal = document.querySelector('.pick__modal');
+pickModal.querySelector('.pick__modal-close').addEventListener('click', function () {
+	fadeOut(pickModal, 300);
+});
+let pickBtns = document.querySelectorAll('.pick-item__btn');
+pickBtns.forEach(btn => {
+	btn.addEventListener('click', function (event) {
+		event.preventDefault();
+		fadeIn(pickModal, 300);
+		let titleModal = pickModal.querySelector('.pick__modal-title');
+		let inputForModal = pickModal.querySelector('input[name="for"]');
+		switch (event.currentTarget.dataset.for) {
+			case 'cats':
+				titleModal.textContent = 'Подарить корм для котов';
+				inputForModal.value = event.currentTarget.dataset.for;
+				break;
+			case 'dogs':
+				titleModal.textContent = 'Подарить корм для собак';
+				inputForModal.value = event.currentTarget.dataset.for;
+				break;
+			default:
+				titleModal.textContent = 'Подарить корм';
+				inputForModal.value = 'Подарить корм';
+				break;
+		}
+
+	});
+});
+
+let radio = pickModal.querySelectorAll('.pick__form-label-radio');
+radio.forEach(el => {
+	el.addEventListener('change', () => {
+		if (el.value === 'Другая сумма') {
+			pickModal.querySelector('.pick__form-input-row').classList.add('active');
+		} else {
+			pickModal.querySelector('.pick__form-input-row').classList.remove('active');
+		}
+	});
+});
+
+
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
 

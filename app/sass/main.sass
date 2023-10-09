@@ -243,7 +243,55 @@ img
 		padding-top: 0
 		margin-top: 0
 		padding-bottom: 0
-	&_heroes, &_team
+		background: url(../images/dest/stars_first.png) center no-repeat, url('../images/bg.svg') center -1px no-repeat
+		background-size: cover, auto
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 100%
+			width: calc(50% - (1920px / 2))
+			background: url(../images/dest/stars_gray.png) left center no-repeat #FBC009
+			background-size: cover
+			z-index: -1
+		&:before
+			content: ''
+			position: absolute
+			right: 0
+			top: 0
+			height: 100%
+			width: calc(50% - (1920px / 2))
+			background: url(../images/dest/stars.png) left center no-repeat #57368a
+			background-size: cover
+			z-index: -1
+	&_pick
+		background: url(../images/dest/stars_pick.png) center no-repeat, url('../images/pick_bg.svg') center -1px no-repeat
+		background-size: cover
+		padding: 60px 0
+		+media-breakpoint-up(xl)
+			padding: 190px 0 100px 0
+		&:after
+			content: ''
+			position: absolute
+			right: 0
+			top: 0
+			height: 100%
+			width: calc(50% - (1920px / 2))
+			background: url(../images/dest/stars_gray.png) left center no-repeat #FBC009
+			background-size: cover
+			z-index: -1
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 100%
+			width: calc(50% - (1920px / 2))
+			background: url(../images/dest/stars.png) left center no-repeat #57368a
+			background-size: cover
+			z-index: -1
+	&_heroes, &_team, &_qa
 		background-image: url('../images/dest/stars.png')
 		background-repeat: no-repeat
 		background-size: cover
@@ -288,31 +336,9 @@ img
 
 .first
 	background-color: #fff
-	background-image: url('../images/bg.svg')
-	background-repeat: no-repeat
-	background-position: center top
 	height: 600px
 	display: flex
-	background-position: center -1px
 	overflow: hidden
-	&:after
-		content: ''
-		position: absolute
-		left: 0
-		top: 0
-		height: 100%
-		width: calc(50% - (1350px / 2))
-		background-color: #FBC009
-		z-index: -1
-	&:before
-		content: ''
-		position: absolute
-		right: 0
-		top: 0
-		height: 100%
-		width: calc(50% - (1350px / 2))
-		background-color: #57368A
-		z-index: -1
 	+media-breakpoint-up(sm)
 		height: 789px
 		align-items: center
@@ -468,6 +494,8 @@ img
 	&_transparent
 		background-color: transparent
 		box-shadow: none
+	&_form
+		padding: 14px 40px
 	/* .btn__span */
 	&__span
 		font-size: 12px
@@ -491,10 +519,17 @@ img
 		font-size: 40px
 	&_fiolet
 		color: $fiolet
+	&_vs
+		max-width: 633px
+		margin-left: auto
+		margin-right: auto
+		line-height: 1.4
 
 .subtitle
 	margin-bottom: 48px
 	text-align: center
+	&_white
+		color: #fff
 
 .tab-content
 	display: none
@@ -758,6 +793,209 @@ img
 	&__item-text
 		+media-breakpoint-up(sm)
 			max-width: 463px
+
+.pick
+	position: relative
+	/* .pick__block */
+	&__block
+	/* .pick__row */
+	&__row
+		display: flex
+		justify-content: space-between
+	/* .pick__col */
+	&__col
+		flex: 0 1 454px
+	/* .pick__modal-close */
+	&__modal-close
+		position: absolute
+		cursor: pointer
+		top: 27px
+		right: 14px
+		padding: 15px 0
+		z-index: 2
+		&:before, &:after
+			content: ''
+			width: 35px
+			height: 1px
+			display: block
+			background-color: #414141
+		&:after
+			transform: rotate(45deg)
+		&:before
+			transform: rotate(-45deg)
+		+media-breakpoint-up(sm)
+			top: 15px
+			right: 10px
+	/* .pick__modal */
+	&__modal
+		background-color: #fff
+		max-width: 768px
+		width: 100%
+		border-radius: 24px
+		padding: 24px
+		position: absolute
+		bottom: 50px
+		left: 0
+		border: 1px dashed $fiolet
+		display: none
+		+media-breakpoint-up(sm)
+			bottom: 100px
+		+media-breakpoint-up(md)
+			left: calc(50% - 386px)
+		+media-breakpoint-up(lg)
+			padding: 48px
+	/* .pick__modal-title */
+	&__modal-title
+		font-family: Seymour One
+		text-align: left
+		margin-bottom: 24px
+		font-size: 16px
+		max-width: 210px
+		+media-breakpoint-up(sm)
+			text-align: center
+			max-width: initial
+	/* .pick__form */
+	&__form
+
+	/* .pick__form-radio-row */
+	&__form-radio-row
+		gap: 10px
+		display: flex
+		margin-bottom: 16px
+		flex-wrap: wrap
+		+media-breakpoint-up(md)
+			gap: 30px
+	/* .pick__form-label */
+	&__form-label
+		cursor: pointer
+		user-select: none
+	/* .pick__form-label-radio */
+	&__form-label-radio
+		opacity: 0
+		z-index: -1
+		position: absolute
+		&:checked+.pick__form-label-span
+			color: #fff
+			background-color: $fiolet
+	/* .pick__form-label-span */
+	&__form-label-span
+		color: $fiolet
+		font-family: Montserrat
+		font-size: 12px
+		font-weight: 600
+		line-height: 22px
+		padding: 16px
+		border: 1px solid $fiolet
+		border-radius: 16px
+		display: block
+		+media-breakpoint-up(sm)
+			padding: 24px
+	/* .pick__form-input */
+	&__form-input
+		width: 100%
+		border: none
+		background-color: #F6F6F6
+		border-radius: 16px
+		border: 1px solid #aaa
+		margin-bottom: 16px
+		padding: 14px 24px
+		outline: 0
+	&__form-input_sum
+		max-width: 289px
+		margin-bottom: 0
+		display: none
+	/* .pick__form-input-row */
+	&__form-input-row
+		display: flex
+		gap: 30px
+		flex-flow: wrap
+		+media-breakpoint-up(sm)
+			justify-content: flex-end
+		&.active
+			justify-content: space-between
+			.pick__form-input_sum
+				display: block
+
+.pick-item
+	position: relative
+	display: flex
+	flex-direction: column
+	&_dog
+		.pick-item__volume-block
+			flex-direction: column
+			+media-breakpoint-up(sm)
+				flex-direction: row
+				justify-content: flex-end
+		.pick-item__volume-target
+			align-self: end
+			text-align: right
+			+media-breakpoint-up(sm)
+				text-align: left
+				align-self: start
+		.pick-item__volume
+			align-self: end
+		.pick-item__img
+			left: calc(50% - 70px)
+			right: auto
+			+media-breakpoint-up(sm)
+				left: 0
+		.pick-item__btn
+			align-self: end
+		.pick-item__volume-load
+			background: url('../images/dest/volume_bg.png') $fiolet
+	/* .pick-item__volume-block */
+	&__volume-block
+		display: flex
+		gap: 30px
+		margin-bottom: 30px
+		flex-direction: column-reverse
+		+media-breakpoint-up(sm)
+			flex-direction: row
+	/* .pick-item__volume */
+	&__volume
+		height: 300px
+		width: 40px
+		background-color: #ddd
+		border-radius: 24px
+		border: 1px dashed $fiolet
+		position: relative
+		overflow: hidden
+		+media-breakpoint-up(sm)
+			height: 400px
+			width: 50px
+	/* .pick-item__volume-load */
+	&__volume-load
+		position: absolute
+		height: 0
+		width: 100%
+		background: url('../images/dest/volume_bg.png') $yellow
+		bottom: 0
+		left: 0
+		border-top-left-radius: 24px
+		border-top-right-radius: 24px
+		outline: 1px dashed $fiolet
+	/* .pick-item__volume-target */
+	&__volume-target
+		font-family: Seymour One
+		color: #fff
+		max-width: 126px
+	/* .pick-item__btn */
+	&__btn
+		align-self: start
+	/* .pick-item__img */
+	&__img
+		position: absolute
+		bottom: 0
+		right: calc(50% - 70px)
+		z-index: -1
+		max-width: 140px
+		+media-breakpoint-up(sm)
+			max-width: 190px
+			right: 0
+		+media-breakpoint-up(md)
+			max-width: 220px
+		+media-breakpoint-up(lg)
+			max-width: initial
 
 @keyframes "fade"
 	from
