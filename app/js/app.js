@@ -72,6 +72,24 @@ radio.forEach(el => {
 });
 
 
+let qa = document.querySelectorAll('.qa-item__title-block');
+qa.forEach(el => {
+	el.addEventListener('click', function (event) {
+		if (event.currentTarget.parentElement.classList.contains("open")) {
+			event.currentTarget.nextElementSibling.style.paddingTop = "0";
+			event.currentTarget.nextElementSibling.style.paddingBottom = "0";
+			event.currentTarget.nextElementSibling.style.maxHeight = "0";
+			event.currentTarget.parentElement.classList.remove("open");
+		} else {
+			event.currentTarget.nextElementSibling.style.paddingTop = "20px";
+			event.currentTarget.nextElementSibling.style.paddingBottom = "20px";
+			event.currentTarget.nextElementSibling.style.maxHeight = 40 + event.currentTarget.nextElementSibling.scrollHeight + "px";
+			event.currentTarget.parentElement.classList.add("open");
+		}
+	});
+});
+
+
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
 

@@ -586,7 +586,7 @@ img
 	&__block
 		padding: 20px 30px 20px 20px
 		background-color: #fff
-		border-radius: 24px
+		border-radius: 16px
 		border: 1px dashed $fiolet
 		.simple-bar
 			height: 422px
@@ -597,6 +597,7 @@ img
 			margin-bottom: 24px
 		+media-breakpoint-up(sm)
 			padding: 48px
+			border-radius: 24px
 	/* .heroes__right */
 	&__right
 		+media-breakpoint-up(lg)
@@ -831,7 +832,7 @@ img
 		background-color: #fff
 		max-width: 768px
 		width: 100%
-		border-radius: 24px
+		border-radius: 16px
 		padding: 24px
 		position: absolute
 		bottom: 50px
@@ -840,6 +841,7 @@ img
 		display: none
 		+media-breakpoint-up(sm)
 			bottom: 100px
+			border-radius: 24px
 		+media-breakpoint-up(md)
 			left: calc(50% - 386px)
 		+media-breakpoint-up(lg)
@@ -996,6 +998,86 @@ img
 			max-width: 220px
 		+media-breakpoint-up(lg)
 			max-width: initial
+
+.qa-item
+	background-color: #fff
+	border: 1px dashed $fiolet
+	padding: 16px
+	border-radius: 16px
+	&:not(:last-child)
+		margin-bottom: 8px
+	&.open
+		.qa-item__icon::before
+			opacity: 0
+			transform: rotate(0deg)
+		+media-breakpoint-up(sm)
+			.qa-item__title
+				font-weight: 700
+	+media-breakpoint-up(sm)
+		padding: 16px 24px
+		border-radius: 24px
+	/* .qa-item__title-block */
+	&__title-block
+		display: flex
+		align-items: center
+		cursor: pointer
+		position: relative
+	/* .qa-item__num */
+	&__num
+		background-image: url('../images/dest/step.svg')
+		background-repeat: no-repeat
+		height: 55px
+		width: 55px
+		flex: 0 0 55px
+		display: flex
+		align-items: center
+		justify-content: center
+		color: #fff
+		font-family: Seymour One
+		font-size: 20px
+		line-height: 24px
+		text-align: center
+		background-size: 45px
+		margin-right: 8px
+		background-position: center
+		+media-breakpoint-up(sm)
+			background-size: 56px
+			background-position: center
+			height: 64px
+			width: 64px
+			flex: 0 0 64px
+			font-size: 28px
+			line-height: 28px
+			margin-right: 24px
+	/* .qa-item__title */
+	&__title
+		padding-right: 30px
+		+media-breakpoint-up(sm)
+			padding-right: 40px
+	/* .qa-item__icon */
+	&__icon
+		position: absolute
+		right: 20px
+		&::after, &::before
+			content: ''
+			position: absolute
+			height: 2px
+			width: 14px
+			background-color: $fiolet
+			border-radius: 10px
+		&::before
+			transform: rotate(90deg)
+			transition: opacity .25s ease-out, transform .25s ease-out
+		+media-breakpoint-up(sm)
+			right: 30px
+			&::after, &::before
+				width: 18px
+				height: 3px
+	/* .qa-item__text-block */
+	&__text-block
+		max-height: 0
+		overflow: hidden
+		transition: all .35s ease-out
 
 @keyframes "fade"
 	from
