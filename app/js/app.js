@@ -115,3 +115,15 @@ document.querySelectorAll('.simple-bar').forEach(el => {
 		autoHide: false,
 	});
 });
+
+
+document.querySelector('#open-video').addEventListener('click', openVideo);
+
+function openVideo() {
+	var modalCallback = document.getElementById("modal-video");
+	let close = modalCallback.querySelector(".modal-content__close");
+	fadeIn(modalCallback, 300, 'flex');
+	close.onclick = function () {
+		fadeOut(modalCallback, 300);
+	}
+}
