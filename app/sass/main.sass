@@ -265,7 +265,8 @@ img
 			background-size: cover
 			z-index: -1
 	&_pick
-		background: url(../images/dest/stars_pick.png) center no-repeat, url('../images/pick_bg.svg') center -1px no-repeat
+		// background: url(../images/dest/stars_pick.png) center no-repeat, url('../images/pick_bg.svg') center -1px no-repeat
+		background: url('../images/pick_bg.svg') center -1px no-repeat
 		background-size: cover
 		padding: 60px 0
 		+media-breakpoint-up(xl)
@@ -290,7 +291,8 @@ img
 			background: url(../images/dest/stars.png) left center no-repeat #57368a
 			background-size: cover
 			z-index: -1
-	&_heroes, &_team, &_qa
+	// &_team, &_qa, &_footer
+	&_heroes, &_team, &_qa, &_footer
 		background-image: url('../images/dest/stars.png')
 		background-repeat: no-repeat
 		background-size: cover
@@ -302,6 +304,11 @@ img
 			background: url('../images/dest/stars.png') center no-repeat, url('../images/dest/Star.png') top center no-repeat $fiolet
 			background-size: cover, auto
 	&_murchatos
+		background: url(../images/dest/stars.png) center no-repeat,url(../images/dest/Star.png) bottom center no-repeat #57358a
+		background-size: cover, contain
+		+media-breakpoint-up(sm)
+			background: url('../images/dest/stars.png') center no-repeat, url('../images/dest/Star.png') top center no-repeat $fiolet
+			background-size: cover, auto
 		+media-breakpoint-up(xl)
 			padding-bottom: 0
 	&_footer
@@ -1317,6 +1324,91 @@ img
 		+media-breakpoint-up(sm)
 			top: 15px
 			right: 10px
+
+.partners
+	/* .partners__row */
+	&__row
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+		align-items: center
+		gap: 10px
+		flex-direction: column
+		+media-breakpoint-up(sm)
+			flex-direction: row
+			gap: 30px
+	/* .partners__col */
+	&__col
+	/* .partners__item */
+	&__item
+
+.footer
+	/* .footer__top */
+	&__top
+		padding-bottom: 32px
+		border-bottom: 1px solid #4D2D7D
+		+media-breakpoint-up(sm)
+			padding-bottom: 48px
+	/* .footer__row */
+	&__row
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		gap: 16px
+		+media-breakpoint-up(sm)
+			gap: 24px
+	/* .footer__col */
+	&__col
+
+	/* .footer__logo */
+	&__logo
+		margin-bottom: 16px
+		+media-breakpoint-up(sm)
+			margin-bottom: 24px
+	/* .footer__text */
+	&__text
+		max-width: 312px
+		color: #fff
+	/* .footer__menu */
+	&__menu
+
+	/* .footer__menu-list */
+	&__menu-list
+		list-style-type: none
+		padding: 0
+		margin: 0
+	/* .footer__menu-item */
+	&__menu-item
+		&:not(:last-child)
+			margin-bottom: 10px
+		+media-breakpoint-up(sm)
+			&:not(:last-child)
+				margin-bottom: 20px
+	/* .footer__menu-link */
+	&__menu-link
+		color: #fff
+		&:hover
+			color: #fff
+	/* .footer__item */
+	&__item
+		margin-bottom: 16px
+		color: #fff
+		a
+			color: #fff
+			&:hover
+				color: #fff
+		+media-breakpoint-up(sm)
+			margin-bottom: 24px
+	/* .footer__bottom */
+	&__bottom
+		padding: 24px 0
+		+media-breakpoint-up(sm)
+			padding: 32px 0
+	/* .footer__bottom-item */
+	&__bottom-item
+		color: #fff
+		&:hover
+			color: #fff
 
 @keyframes "fade"
 	from

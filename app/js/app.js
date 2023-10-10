@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-
 	let sections = document.querySelectorAll('.section');
 	let length = sections.length;
 	sections.forEach(el => {
 		el.style.zIndex = length;
 		length--;
-
 	});
-
 });
+
+
 
 
 function fadeIn(el, timeout, display) {
@@ -102,7 +101,6 @@ for (let i = 0; i < tabs.length; i++) {
 		}
 		tabs[i].classList.add("active");
 		let tabContentChildren = event.currentTarget.parentElement.nextElementSibling.children;
-		console.log(event.currentTarget.parentElement.nextElementSibling.children);
 		for (let c = 0; c < tabContentChildren.length; c++) {
 			tabContentChildren[c].classList.remove("active");
 		}
@@ -125,5 +123,26 @@ function openVideo() {
 	fadeIn(modalCallback, 300, 'flex');
 	close.onclick = function () {
 		fadeOut(modalCallback, 300);
+	}
+}
+
+let scrollToPickBtns = document.querySelectorAll('.scrollToPick');
+scrollToPickBtns.forEach(btn => {
+	btn.addEventListener('click', scrollToPick);
+});
+
+function scrollToPick(event) {
+	event.preventDefault();
+	window.scrollTo({
+		top: document.querySelector('#pick').getBoundingClientRect().top + window.pageYOffset + yOffset(),
+		behavior: 'smooth'
+	});
+}
+
+function yOffset() {
+	if (window.outerWidth <= 1199) {
+		return 30;
+	} else {
+		return 90;
 	}
 }
