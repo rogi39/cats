@@ -242,6 +242,8 @@ img
 		padding-top: 0
 		margin-top: 0
 		padding-bottom: 0
+		// background: url('../images/bg.svg') center -1px no-repeat
+		// background-size: auto
 		background: url(../images/dest/stars_first.png) center no-repeat, url('../images/bg.svg') center -1px no-repeat
 		background-size: cover, auto
 		&:after
@@ -552,9 +554,15 @@ img
 		color: #fff
 
 .tab-content
-	display: none
+	// display: none
+	opacity: 0
+	position: absolute
+	z-index: -1
 	&.active
-		display: block
+		// display: block
+		opacity: 1
+		position: relative
+		z-index: 1
 
 .heroes
 	/* .heroes__btn-row */
@@ -1409,6 +1417,69 @@ img
 		color: #fff
 		&:hover
 			color: #fff
+
+.stars
+	overflow: hidden
+	&_white
+		.stars__item
+			background: radial-gradient(ellipse at center, rgba(255,255,255,.4) 2%, rgba(255,255,255,.4) 100%)
+	&_yellow
+		.stars__item
+			background: radial-gradient(ellipse at center, rgba(253, 220, 111, 0.5) 2%, rgba(253, 220, 111,.5) 100%)
+			// 253, 230, 157
+	&__item
+		position: absolute
+		border-radius: 100%
+		z-index: -1
+		// filter: blur(1px)
+		animation: stars infinite alternate
+
+.smoke
+	overflow: hidden
+	&__item
+		position: absolute
+		z-index: -1
+		width: 250px
+		height: 250px
+		background: url('../images/smoke.png') no-repeat
+		background-size: cover
+		// bottom: 150px
+		margin-left: 0px
+		animation: smoke infinite
+
+@keyframes smoke
+	0%
+		opacity: 0
+		transform: translateY(0)
+	50%
+		opacity: 1
+		// transform: translateY(-40%)
+	100%
+		transform: translateY(-80%)
+		opacity: 0
+
+@keyframes stars
+	0%
+		transform: scale(1)
+		opacity: 1
+	20%
+		transform: scale(.9)
+		opacity: .8
+	40%
+		transform: scale(1)
+		opacity: .9
+	40%
+		transform: scale(.2)
+		opacity: .2
+	60%
+		transform: scale(.2)
+		opacity: .1
+	80%
+		transform: scale(.5)
+		opacity: .5
+	100%
+		transform: scale(.9)
+		opacity: .9
 
 @keyframes "fade"
 	from

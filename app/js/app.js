@@ -7,7 +7,86 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
+let params = {
+	amount: 50,
+	size: {
+		min: 1,
+		max: 5,
+		giant: 9
+	},
+	duration: {
+		min: 5,
+		max: 10,
+	},
+	boxShadowColor: {
+		white: '255,255,255',
+		yellow: '253,220,111'
+	}
+}
 
+let starsWhite = document.querySelectorAll('.stars_white');
+starsWhite.forEach(starElem => {
+	createStars(starElem, params.boxShadowColor.white);
+});
+let starsYellow = document.querySelectorAll('.stars_yellow');
+starsYellow.forEach(starElem => {
+	createStars(starElem, params.boxShadowColor.yellow);
+});
+
+function randomBetween(a, b) {
+	return (a + (Math.random() * (b - a)));
+}
+
+function createStars(block, boxShColor) {
+	for (let i = 0; i < params.amount; i++) {
+		let item = document.createElement('div');
+		item.classList.add('stars__item');
+		let size = Math.round(Math.random() * 10) === 0 ? params.size.giant : randomBetween(params.size.min, params.size.max);
+		item.style.width = size + "px";
+		item.style.height = size + "px";
+		item.style.left = randomBetween(0, 100) + "%";
+		item.style.top = randomBetween(0, 100) + "%";
+		item.style.boxShadow = "0 0 " + size + "px " + size / 2 + "px rgba(" + boxShColor + ", .5)";
+		item.style.animationDuration = randomBetween(params.duration.min, params.duration.max) + "s";
+		block.insertAdjacentElement('beforeend', item);
+	}
+}
+
+
+let paramsSmoke = {
+	amount: 5,
+	size: {
+		min: 700,
+		max: 1000,
+		giant: 1000
+	},
+	duration: {
+		min: 15,
+		max: 30,
+	}
+}
+
+let smoke = document.querySelectorAll('.smoke');
+smoke.forEach(smokeElem => {
+	createSmoke(smokeElem);
+});
+
+
+
+function createSmoke(block) {
+	for (let i = 0; i < paramsSmoke.amount; i++) {
+		let item = document.createElement('div');
+		item.classList.add('smoke__item');
+		let size = Math.round(Math.random() * 10) === 0 ? paramsSmoke.size.giant : randomBetween(paramsSmoke.size.min, paramsSmoke.size.max);
+		item.style.width = size + "px";
+		item.style.height = size + "px";
+		item.style.left = randomBetween(0, 50) + "%";
+		item.style.top = randomBetween(-50, 50) + "%";
+
+		item.style.animationDuration = randomBetween(paramsSmoke.duration.min, paramsSmoke.duration.max) + "s";
+		block.insertAdjacentElement('beforeend', item);
+	}
+}
 
 
 function fadeIn(el, timeout, display) {
