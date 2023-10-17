@@ -267,8 +267,8 @@ img
 			background-size: cover
 			z-index: -1
 	&_pick
-		// background: url(../images/dest/stars_pick.png) center no-repeat, url('../images/pick_bg.svg') center -1px no-repeat
-		background: url('../images/pick_bg.svg') center -1px no-repeat
+		background: url(../images/dest/stars_pick.png) center no-repeat, url('../images/pick_bg.svg') center -1px no-repeat
+		// background: url('../images/pick_bg.svg') center -1px no-repeat
 		background-size: cover
 		padding: 60px 0
 		+media-breakpoint-up(xl)
@@ -413,13 +413,13 @@ img
 	&__images
 		position: absolute
 		max-width: 170px
-		bottom: 80px
+		bottom: 50px
 		+media-breakpoint-up(sm)
 			max-width: 320px
-			bottom: 90px
+			bottom: 30px
 		+media-breakpoint-up(lg)
 			max-width: 500px
-			bottom: 0
+			bottom: -80px
 		+media-breakpoint-up(xl)
 			max-width: initial
 	/* .first__dog */
@@ -969,16 +969,15 @@ img
 	&__form-input_sum
 		max-width: 289px
 		margin-bottom: 0
-		display: none
+		// display: none
 	/* .pick__form-input-row */
 	&__form-input-row
 		display: flex
 		gap: 30px
 		flex-flow: wrap
-		+media-breakpoint-up(sm)
-			justify-content: flex-end
+		justify-content: space-between
 		&.active
-			justify-content: space-between
+
 			.pick__form-input_sum
 				display: block
 
@@ -1157,18 +1156,18 @@ img
 			top: 140px
 			max-width: 300px
 		+media-breakpoint-up(md)
-			left: -30px
+			left: 0
 			top: 330px
 		+media-breakpoint-up(lg)
 			max-width: 360px
 			top: 270px
 		+media-breakpoint-up(xl)
 			max-width: initial
-			left: calc(50% - 675px)
+			left: 3%
 			bottom: 200px
 			top: auto
 		+media-breakpoint-up(wxp)
-			left: calc(50% - 705px)
+			left: calc(50% - 635px)
 	/* .murchatos__block */
 	&__block
 		margin-top: 170px
@@ -1422,7 +1421,7 @@ img
 	overflow: hidden
 	&_white
 		.stars__item
-			background: radial-gradient(ellipse at center, rgba(255,255,255,.4) 2%, rgba(255,255,255,.4) 100%)
+			background: radial-gradient(ellipse at center, rgba(255,255,255,1) 2%, rgba(255,255,255,1) 100%)
 	&_yellow
 		.stars__item
 			background: radial-gradient(ellipse at center, rgba(253, 220, 111, 0.5) 2%, rgba(253, 220, 111,.5) 100%)
@@ -1442,7 +1441,7 @@ img
 		width: 250px
 		height: 250px
 		background: url('../images/smoke.png') no-repeat
-		background-size: cover
+		background-size: contain
 		// bottom: 150px
 		margin-left: 0px
 		animation: smoke infinite
@@ -1452,7 +1451,7 @@ img
 		opacity: 0
 		transform: translateY(0)
 	50%
-		opacity: 1
+		opacity: .4
 		// transform: translateY(-40%)
 	100%
 		transform: translateY(-80%)

@@ -46,7 +46,7 @@ function createStars(block, boxShColor) {
 		item.style.height = size + "px";
 		item.style.left = randomBetween(0, 100) + "%";
 		item.style.top = randomBetween(0, 100) + "%";
-		item.style.boxShadow = "0 0 " + size + "px " + size / 2 + "px rgba(" + boxShColor + ", .5)";
+		item.style.boxShadow = "0 0 " + size + "px " + size / 2 + "px rgba(" + boxShColor + ", 1)";
 		item.style.animationDuration = randomBetween(params.duration.min, params.duration.max) + "s";
 		block.insertAdjacentElement('beforeend', item);
 	}
@@ -80,8 +80,8 @@ function createSmoke(block) {
 		let size = Math.round(Math.random() * 10) === 0 ? paramsSmoke.size.giant : randomBetween(paramsSmoke.size.min, paramsSmoke.size.max);
 		item.style.width = size + "px";
 		item.style.height = size + "px";
-		item.style.left = randomBetween(0, 50) + "%";
-		item.style.top = randomBetween(-50, 50) + "%";
+		item.style.left = randomBetween(0, 40) + "%";
+		item.style.bottom = randomBetween(-50, -30) + "%";
 
 		item.style.animationDuration = randomBetween(paramsSmoke.duration.min, paramsSmoke.duration.max) + "s";
 		block.insertAdjacentElement('beforeend', item);
@@ -141,10 +141,16 @@ pickBtns.forEach(btn => {
 let radio = pickModal.querySelectorAll('.pick__form-label-radio');
 radio.forEach(el => {
 	el.addEventListener('change', () => {
+
 		if (el.value === 'Другая сумма') {
-			pickModal.querySelector('.pick__form-input-row').classList.add('active');
+			pickModal.querySelector('.pick__form-input[name="sum"]').disabled = false;
+			pickModal.querySelector('.pick__form-input[name="sum"]').value = '';
+			console.log(pickModal.querySelector('.pick__form-input[name="sum"]').value);
+			pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = 'от 300 руб.';
 		} else {
-			pickModal.querySelector('.pick__form-input-row').classList.remove('active');
+			pickModal.querySelector('.pick__form-input[name="sum"]').disabled = true;
+			pickModal.querySelector('.pick__form-input[name="sum"]').value = el.dataset.pickPrice;
+			pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = '';
 		}
 	});
 });
@@ -216,6 +222,9 @@ function scrollToPick(event) {
 		top: document.querySelector('#pick').getBoundingClientRect().top + window.pageYOffset + yOffset(),
 		behavior: 'smooth'
 	});
+	if (event.currentTarget.dataset.scrollFor) {
+		document.querySelector(`.pick-item__btn[data-for="${event.currentTarget.dataset.scrollFor}"]`).click();
+	}
 }
 
 function yOffset() {
@@ -225,3 +234,7 @@ function yOffset() {
 		return 90;
 	}
 }
+
+var lazyLoadInstance = new LazyLoad({
+	elements_selector: ".lazy"
+});
