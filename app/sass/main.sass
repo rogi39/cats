@@ -1063,9 +1063,6 @@ img
 		.pick-item__volume-target
 			align-self: end
 			text-align: right
-			+media-breakpoint-up(sm)
-				text-align: left
-				align-self: start
 		.pick-item__volume
 			align-self: end
 		.pick-item__img
@@ -1077,6 +1074,10 @@ img
 			align-self: end
 		.pick-item__volume-load
 			background: url('../images/dest/volume_bg.png') $fiolet
+		.pick-item__volume-right
+			text-align: right
+		.pick-item__volume-total
+			align-self: end
 	/* .pick-item__volume-block */
 	&__volume-block
 		display: flex
@@ -1085,6 +1086,10 @@ img
 		flex-direction: column-reverse
 		+media-breakpoint-up(sm)
 			flex-direction: row
+	/* .pick-item__volume-right */
+	&__volume-right
+		display: flex
+		flex-direction: column
 	/* .pick-item__volume */
 	&__volume
 		height: 300px
@@ -1113,6 +1118,16 @@ img
 		font-family: Seymour One
 		color: #fff
 		max-width: 126px
+		margin-bottom: 16px
+		+media-breakpoint-up(sm)
+			margin-bottom: 24px
+	/* .pick-item__volume-total */
+	&__volume-total
+		background-color: #fff
+		color: #000
+		padding: 13px 15px
+		border-radius: 30px
+		align-self: start
 	/* .pick-item__btn */
 	&__btn
 		align-self: start

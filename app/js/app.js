@@ -248,3 +248,28 @@ for (let i = 0; i < galleries.length; i++) {
 		download: false
 	})
 }
+
+
+const form = document.querySelector('.pick__form');
+
+form.addEventListener('submit', (event) => {
+	event.preventDefault();
+	event.currentTarget.querySelector('input[name="sum"]').removeAttribute('disabled');
+	let formData = new FormData(form);
+	fetch('pay.php', {
+			method: "POST",
+			body: formData,
+		})
+		.then(response => response.json())
+		.then((data) => {
+			if (data.result === 'ok') {
+				window.location.href = data.redirect_url;
+				// window.open(data.redirect_url, '_blank');
+			} else {
+				console.log(data.error);
+			}
+
+		});
+	event.currentTarget.querySelector('input[name="sum"]').setAttribute('disabled', '');
+
+});
