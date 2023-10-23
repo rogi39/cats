@@ -185,7 +185,7 @@ for (let i = 0; i < tabs.length; i++) {
 			tabsChildren[t].classList.remove("active");
 		}
 		tabs[i].classList.add("active");
-		let tabContentChildren = event.currentTarget.parentElement.nextElementSibling.children;
+		let tabContentChildren = event.currentTarget.parentElement.parentElement.nextElementSibling.children;
 		for (let c = 0; c < tabContentChildren.length; c++) {
 			tabContentChildren[c].classList.remove("active");
 		}
@@ -238,3 +238,13 @@ function yOffset() {
 var lazyLoadInstance = new LazyLoad({
 	elements_selector: ".lazy"
 });
+
+
+var galleries = document.querySelectorAll('.lg');
+for (let i = 0; i < galleries.length; i++) {
+	lightGallery(galleries[i], {
+		thumbnail: false,
+		selector: '.lg-item',
+		download: false
+	})
+}

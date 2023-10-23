@@ -358,7 +358,7 @@ img
 		align-items: center
 	/* .first__block */
 	&__block
-		max-width: 640px
+		max-width: 732px
 		text-align: center
 		position: relative
 		margin-top: 160px
@@ -378,6 +378,10 @@ img
 			margin-bottom: 24px
 			span
 				margin-left: 0
+		+media-breakpoint-up(md)
+			font-size: 60px
+		+media-breakpoint-up(xl)
+			font-size: 80px
 	/* .first__question */
 	&__question
 		text-align: center
@@ -390,14 +394,28 @@ img
 			font-size: 30px
 			line-height: 48px
 			margin-bottom: 24px
+		+media-breakpoint-up(md)
+			font-size: 34px
+			line-height: 54px
+		+media-breakpoint-up(xl)
+			font-size: 41px
+			line-height: 56px
+			margin-bottom: 45px
 	/* .first__text */
 	&__text
 		color: #fff
-		max-width: 368px
+		max-width: 518px
 		margin: 0 auto
 		margin-bottom: 25px
+		font-weight: 700
 		+media-breakpoint-up(sm)
 			margin-bottom: 55px
+			font-size: 18px
+			line-height: 28px
+		+media-breakpoint-up(xl)
+			font-size: 22px
+			line-height: 33px
+			max-width: 648px
 	/* .first__row */
 	&__row
 		display: flex
@@ -418,9 +436,9 @@ img
 			max-width: 320px
 			bottom: 30px
 		+media-breakpoint-up(lg)
-			max-width: 500px
-			bottom: -80px
-		+media-breakpoint-up(xl)
+			max-width: 450px
+			bottom: -40px
+		+media-breakpoint-up(wxp)
 			max-width: initial
 	/* .first__dog */
 	&__dog
@@ -428,18 +446,20 @@ img
 		+media-breakpoint-up(sm)
 			left: calc(50% - 320px)
 		+media-breakpoint-up(lg)
-			left: 0
+			left: -80px
 		+media-breakpoint-up(wxp)
-			left: calc(50% - 678px)
+		+media-breakpoint-up(wxpp)
+			left: calc(50% - 968px)
 	/* .first__cat */
 	&__cat
 		right: calc(50% - 170px)
 		+media-breakpoint-up(sm)
 			right: calc(50% - 320px)
 		+media-breakpoint-up(lg)
-			right: 0
+			right: -80px
 		+media-breakpoint-up(wxp)
-			right: calc(50% - 678px)
+		+media-breakpoint-up(wxpp)
+			right: calc(50% - 968px)
 
 .btn
 	color: #fff
@@ -547,9 +567,11 @@ img
 .subtitle
 	margin-bottom: 48px
 	text-align: center
-	max-width: 580px
 	margin-left: auto
 	margin-right: auto
+	position: relative
+	&_w462
+		max-width: 462px
 	&_white
 		color: #fff
 
@@ -569,12 +591,32 @@ img
 	&__btn-row
 		display: flex
 		justify-content: center
-		gap: 12px
 		margin-bottom: 24px
+		position: relative
+		z-index: 2
+		+media-breakpoint-up(lg)
+			margin: 0 -12px
+			margin-bottom: 24px
+	/* .heroes__btn-row-left */
+	&__btn-row-left
+		+media-breakpoint-up(lg)
+			flex: 0 0 460px
+			padding: 0 12px
+		+media-breakpoint-up(xl)
+			flex: 0 0 480px
+	/* .heroes__btn-row-right */
+	&__btn-row-right
+		display: flex
+		gap: 12px
+		+media-breakpoint-up(lg)
+			padding: 0 12px
+			flex: 1
+			min-width: 1px
 	/* .heroes__row */
 	&__row
 		+media-breakpoint-up(lg)
 			display: flex
+			align-items: center
 			margin: 0 -12px
 	/* .heroes__left */
 	&__left
@@ -583,20 +625,26 @@ img
 			flex: 0 0 460px
 			padding: 0 12px
 		+media-breakpoint-up(xl)
-			flex: 0 0 560px
+			flex: 0 0 480px
 			max-width: initial
 	/* .heroes__img */
 	&__img
+		+media-breakpoint-up(lg)
+			position: absolute
+			bottom: -70px
+			left: -90px
 
 	/* .heroes__dog */
 	&__dog
-		border-radius: 50%
-		position: absolute
+		border-radius: 5px
+		// position: absolute
 		max-width: 100px
+		margin-bottom: 24px
+		margin-right: 12px
 		+media-breakpoint-up(sm)
 			max-width: 140px
 		+media-breakpoint-up(xl)
-			max-width: 200px
+			max-width: 170px
 	&__dog_1
 		right: 0
 		bottom: 60px
@@ -609,7 +657,7 @@ img
 			bottom: 280px
 	/* .heroes__images */
 	&__images
-		position: relative
+		// position: relative
 	/* .heroes__right */
 	&__right
 		+media-breakpoint-up(lg)
@@ -617,15 +665,36 @@ img
 			flex: 1
 			min-width: 1px
 
+.lg-item
+	cursor: pointer
+
 .scroll-block
 	padding: 20px 30px 20px 20px
 	background-color: #fff
 	border-radius: 16px
-	border: 1px dashed $fiolet
+	// border: 1px dashed $fiolet
+	h3
+		color: #fff
+		margin-bottom: 12px
+	p
+		margin-bottom: 24px
+		color: #fff
+	+media-breakpoint-up(sm)
+		padding: 52px
+		border-radius: 24px
+	&_fiolet
+		background-color: $fiolet
+		color: #fff
+		h3
+			color: #fff
+	&_yellow
+		background-color: $yellow
 	.simple-bar
 		max-height: 422px
 	&_murchatos
 		position: relative
+		h3, p
+			color: #000
 		&:after, &:before
 			content: ''
 			border: dashed transparent
@@ -660,14 +729,6 @@ img
 		+media-breakpoint-up(xl)
 			&:after, &:before
 				top: 38px
-	h3
-		color: $fiolet
-		margin-bottom: 12px
-	p
-		margin-bottom: 24px
-	+media-breakpoint-up(sm)
-		padding: 48px
-		border-radius: 24px
 
 .how
 	overflow: hidden
@@ -694,22 +755,30 @@ img
 	/* .how__images */
 	&__images
 		position: absolute
+		z-index: -1
 		bottom: -10px
 		max-width: 145px
 		+media-breakpoint-up(sm)
 			max-width: 205px
+			bottom: -40px
 		+media-breakpoint-up(lg)
 			max-width: 255px
+		+media-breakpoint-up(xl)
+			max-width: 395px
 	/* .how__dog */
 	&__dog
 		left: calc(42% - 145px)
 		+media-breakpoint-up(sm)
 			left: calc(42% - 255px)
+		+media-breakpoint-up(xl)
+			left: calc(42% - 395px)
 	/* .how__cat */
 	&__cat
 		right: calc(42% - 145px)
 		+media-breakpoint-up(sm)
 			right: calc(42% - 255px)
+		+media-breakpoint-up(xl)
+			right: calc(42% - 395px)
 	/* .how__btn-row */
 	&__btn-row
 		text-align: center
@@ -777,6 +846,7 @@ img
 		font-size: 14px
 		line-height: 26px
 		color: #fff
+		font-weight: 700
 		text-align: center
 		+media-breakpoint-up(sm)
 			font-size: 16px
@@ -930,7 +1000,7 @@ img
 		margin-bottom: 16px
 		flex-wrap: wrap
 		+media-breakpoint-up(md)
-			gap: 30px
+			gap: 29px
 	/* .pick__form-label */
 	&__form-label
 		cursor: pointer
@@ -946,7 +1016,6 @@ img
 	/* .pick__form-label-span */
 	&__form-label-span
 		color: $fiolet
-		font-family: Montserrat
 		font-size: 12px
 		font-weight: 600
 		line-height: 22px
@@ -1055,12 +1124,15 @@ img
 		z-index: -1
 		max-width: 140px
 		+media-breakpoint-up(sm)
-			max-width: 190px
+			max-width: 300px
 			right: 0
+			bottom: -100px
 		+media-breakpoint-up(md)
-			max-width: 220px
+			max-width: 400px
+
 		+media-breakpoint-up(lg)
-			max-width: initial
+			bottom: -140px
+			max-width: 450px
 
 .qa-item
 	background-color: #fff
@@ -1428,6 +1500,7 @@ img
 			// 253, 230, 157
 	&__item
 		position: absolute
+		z-index: -2
 		border-radius: 100%
 		z-index: -1
 		// filter: blur(1px)
@@ -1437,7 +1510,7 @@ img
 	overflow: hidden
 	&__item
 		position: absolute
-		z-index: -1
+		z-index: -2
 		width: 250px
 		height: 250px
 		background: url('../images/smoke.png') no-repeat
