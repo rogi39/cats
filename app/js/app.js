@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-	let sections = document.querySelectorAll('.section');
+	let sections = document.querySelectorAll('.zIndex');
 	let length = sections.length;
 	sections.forEach(el => {
 		el.style.zIndex = length;
@@ -110,50 +110,53 @@ function fadeOut(el, timeout) {
 
 
 let pickModal = document.querySelector('.pick__modal');
-pickModal.querySelector('.pick__modal-close').addEventListener('click', function () {
-	fadeOut(pickModal, 300);
-});
-let pickBtns = document.querySelectorAll('.pick-item__btn');
-pickBtns.forEach(btn => {
-	btn.addEventListener('click', function (event) {
-		event.preventDefault();
-		fadeIn(pickModal, 300);
-		let titleModal = pickModal.querySelector('.pick__modal-title');
-		let inputForModal = pickModal.querySelector('input[name="for"]');
-		switch (event.currentTarget.dataset.for) {
-			case 'cats':
-				titleModal.textContent = 'Подарить корм для котов';
-				inputForModal.value = event.currentTarget.dataset.for;
-				break;
-			case 'dogs':
-				titleModal.textContent = 'Подарить корм для собак';
-				inputForModal.value = event.currentTarget.dataset.for;
-				break;
-			default:
-				titleModal.textContent = 'Подарить корм';
-				inputForModal.value = 'Подарить корм';
-				break;
-		}
-
+if (pickModal) {
+	pickModal.querySelector('.pick__modal-close').addEventListener('click', function () {
+		fadeOut(pickModal, 300);
 	});
-});
 
-let radio = pickModal.querySelectorAll('.pick__form-label-radio');
-radio.forEach(el => {
-	el.addEventListener('change', () => {
+	let pickBtns = document.querySelectorAll('.pick-item__btn');
+	pickBtns.forEach(btn => {
+		btn.addEventListener('click', function (event) {
+			event.preventDefault();
+			fadeIn(pickModal, 300);
+			let titleModal = pickModal.querySelector('.pick__modal-title');
+			let inputForModal = pickModal.querySelector('input[name="for"]');
+			switch (event.currentTarget.dataset.for) {
+				case 'cats':
+					titleModal.textContent = 'Подарить корм для котов';
+					inputForModal.value = event.currentTarget.dataset.for;
+					break;
+				case 'dogs':
+					titleModal.textContent = 'Подарить корм для собак';
+					inputForModal.value = event.currentTarget.dataset.for;
+					break;
+				default:
+					titleModal.textContent = 'Подарить корм';
+					inputForModal.value = 'Подарить корм';
+					break;
+			}
 
-		if (el.value === 'Другая сумма') {
-			pickModal.querySelector('.pick__form-input[name="sum"]').disabled = false;
-			pickModal.querySelector('.pick__form-input[name="sum"]').value = '';
-			console.log(pickModal.querySelector('.pick__form-input[name="sum"]').value);
-			pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = 'от 300 руб.';
-		} else {
-			pickModal.querySelector('.pick__form-input[name="sum"]').disabled = true;
-			pickModal.querySelector('.pick__form-input[name="sum"]').value = el.dataset.pickPrice;
-			pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = '';
-		}
+		});
 	});
-});
+
+	let radio = pickModal.querySelectorAll('.pick__form-label-radio');
+	radio.forEach(el => {
+		el.addEventListener('change', () => {
+
+			if (el.value === 'Другая сумма') {
+				pickModal.querySelector('.pick__form-input[name="sum"]').disabled = false;
+				pickModal.querySelector('.pick__form-input[name="sum"]').value = '';
+				console.log(pickModal.querySelector('.pick__form-input[name="sum"]').value);
+				pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = 'от 300 руб.';
+			} else {
+				pickModal.querySelector('.pick__form-input[name="sum"]').disabled = true;
+				pickModal.querySelector('.pick__form-input[name="sum"]').value = el.dataset.pickPrice;
+				pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = '';
+			}
+		});
+	});
+}
 
 
 let qa = document.querySelectorAll('.qa-item__title-block');
@@ -200,7 +203,10 @@ document.querySelectorAll('.simple-bar').forEach(el => {
 });
 
 
-document.querySelector('#open-video').addEventListener('click', openVideo);
+let openVideoId = document.querySelector('#open-video');
+if (openVideoId) {
+	document.querySelector('#open-video').addEventListener('click', openVideo);
+}
 
 function openVideo() {
 	var modalCallback = document.getElementById("modal-video");
@@ -252,24 +258,27 @@ for (let i = 0; i < galleries.length; i++) {
 
 const form = document.querySelector('.pick__form');
 
-form.addEventListener('submit', (event) => {
-	event.preventDefault();
-	event.currentTarget.querySelector('input[name="sum"]').removeAttribute('disabled');
-	let formData = new FormData(form);
-	fetch('pay.php', {
-			method: "POST",
-			body: formData,
-		})
-		.then(response => response.json())
-		.then((data) => {
-			if (data.result === 'ok') {
-				window.location.href = data.redirect_url;
-				// window.open(data.redirect_url, '_blank');
-			} else {
-				console.log(data.error);
-			}
+if (form) {
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		event.currentTarget.querySelector('input[name="sum"]').removeAttribute('disabled');
+		let formData = new FormData(form);
+		formData.append("action", "pay_mixplat");
+		fetch('/wp-admin/admin-ajax.php', {
+				method: "POST",
+				body: formData,
+			})
+			.then(response => response.json())
+			.then((data) => {
+				if (data.result === 'ok') {
+					window.location.href = data.redirect_url;
+					// window.open(data.redirect_url, '_blank');
+				} else {
+					console.log(data.error);
+				}
 
-		});
-	event.currentTarget.querySelector('input[name="sum"]').setAttribute('disabled', '');
+			});
+		event.currentTarget.querySelector('input[name="sum"]').setAttribute('disabled', '');
 
-});
+	});
+}

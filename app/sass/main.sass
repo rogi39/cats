@@ -316,6 +316,14 @@ img
 	&_footer
 		padding-bottom: 0
 		clip-path: initial
+	&_page
+		margin: 0
+		clip-path: none
+		padding-top: 160px
+		clip-path: polygon(0 0,100% 0,100% 100%,50% 100%,0 100%)
+		+media-breakpoint-up(xl)
+			padding-top: 190px
+			padding-bottom: 100px
 
 .container
 	padding: 0 10px
@@ -541,6 +549,14 @@ img
 		+media-breakpoint-up(md)
 			font-size: 16px
 
+.btn-page
+	text-align: center
+	margin-top: 30px
+	+media-breakpoint-up(sm)
+		margin-top: 60px
+	+media-breakpoint-up(xl)
+		margin-top: 0
+
 .title
 	font-size: 22px
 	color: #fff
@@ -633,6 +649,8 @@ img
 			position: absolute
 			bottom: -70px
 			left: -90px
+	&__img_page
+		position: initial
 
 	/* .heroes__dog */
 	&__dog
@@ -679,6 +697,8 @@ img
 	p
 		margin-bottom: 24px
 		color: #fff
+	.simple-bar
+		max-height: 422px
 	+media-breakpoint-up(sm)
 		padding: 52px
 		border-radius: 24px
@@ -687,10 +707,14 @@ img
 		color: #fff
 		h3
 			color: #fff
+	&_page
+		border: 1px dashed #fff
+		.simple-bar
+			max-height: 247px
+			min-height: 247px
 	&_yellow
 		background-color: $yellow
-	.simple-bar
-		max-height: 422px
+
 	&_murchatos
 		position: relative
 		h3, p
