@@ -71,8 +71,6 @@ smoke.forEach(smokeElem => {
 	createSmoke(smokeElem);
 });
 
-
-
 function createSmoke(block) {
 	for (let i = 0; i < paramsSmoke.amount; i++) {
 		let item = document.createElement('div');
@@ -82,12 +80,10 @@ function createSmoke(block) {
 		item.style.height = size + "px";
 		item.style.left = randomBetween(0, 40) + "%";
 		item.style.bottom = randomBetween(-50, -30) + "%";
-
 		item.style.animationDuration = randomBetween(paramsSmoke.duration.min, paramsSmoke.duration.max) + "s";
 		block.insertAdjacentElement('beforeend', item);
 	}
 }
-
 
 function fadeIn(el, timeout, display) {
 	el.style.opacity = 0;
@@ -102,12 +98,10 @@ function fadeOut(el, timeout) {
 	el.style.opacity = 1;
 	el.style.transition = `opacity ${timeout}ms`;
 	el.style.opacity = 0;
-
 	setTimeout(() => {
 		el.style.display = 'none';
 	}, timeout);
 }
-
 
 let pickModal = document.querySelector('.pick__modal');
 if (pickModal) {
@@ -158,7 +152,6 @@ if (pickModal) {
 	});
 }
 
-
 let qa = document.querySelectorAll('.qa-item__title-block');
 qa.forEach(el => {
 	el.addEventListener('click', function (event) {
@@ -175,7 +168,6 @@ qa.forEach(el => {
 		}
 	});
 });
-
 
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
@@ -245,7 +237,6 @@ var lazyLoadInstance = new LazyLoad({
 	elements_selector: ".lazy"
 });
 
-
 var galleries = document.querySelectorAll('.lg');
 for (let i = 0; i < galleries.length; i++) {
 	lightGallery(galleries[i], {
@@ -255,9 +246,7 @@ for (let i = 0; i < galleries.length; i++) {
 	})
 }
 
-
 const form = document.querySelector('.pick__form');
-
 if (form) {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault();
@@ -274,11 +263,52 @@ if (form) {
 					window.location.href = data.redirect_url;
 					// window.open(data.redirect_url, '_blank');
 				} else {
-					console.log(data.error);
+					let inputs = form.querySelectorAll('input');
+					inputs.forEach(el => {
+						el.addEventListener('input', () => {
+							el.removeAttribute("style");
+						});
+					});
+					for (let el in data) {
+						if (el !== 'for') {
+							document.querySelector(`input[name=${el}]`).style.borderColor = "#da4c4c";
+						} else {
+							console.log(data.for);
+						}
+					}
 				}
 
 			});
 		event.currentTarget.querySelector('input[name="sum"]').setAttribute('disabled', '');
 
 	});
+}
+
+
+let autocomplete = document.querySelectorAll('.autocomplete');
+autocomplete.forEach(el => {
+	el.addEventListener('input', autocompleteInput);
+});
+
+function autocompleteInput(event) {
+	let nameCookie;
+	switch (event.currentTarget.name) {
+		case 'email':
+			nameCookie = 'userMail';
+			break;
+		case 'name':
+			nameCookie = 'userName';
+			break;
+	}
+	let timer;
+	let seconds = dayToSec(365);
+	let keyPause = 500;
+	clearTimeout(timer);
+	timer = setTimeout(() => {
+		document.cookie = `${nameCookie}=${this.value}; max-age=${seconds}; path=/`;
+	}, keyPause);
+}
+
+function dayToSec(days) {
+	return days * 24 * 60 * 60;
 }

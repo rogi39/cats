@@ -266,6 +266,10 @@ img
 			background: url(../images/dest/stars.png) left center no-repeat #57368a
 			background-size: cover
 			z-index: -1
+	&_team
+		padding: 60px 0
+		+media-breakpoint-up(xl)
+			padding: 190px 0 100px 0
 	&_pick
 		background: url(../images/dest/stars_pick.png) center no-repeat, url('../images/pick_bg.svg') center -1px no-repeat
 		// background: url('../images/pick_bg.svg') center -1px no-repeat
@@ -587,9 +591,12 @@ img
 	margin-right: auto
 	position: relative
 	&_w462
-		max-width: 462px
+		max-width: 582px
 	&_white
 		color: #fff
+	&_bold
+		font-size: 22px
+		font-weight: 700
 
 .tab-content
 	// display: none
@@ -662,7 +669,7 @@ img
 		+media-breakpoint-up(sm)
 			max-width: 140px
 		+media-breakpoint-up(xl)
-			max-width: 170px
+			max-width: 168px
 	&__dog_1
 		right: 0
 		bottom: 60px
@@ -695,8 +702,10 @@ img
 		color: #fff
 		margin-bottom: 12px
 	p
-		margin-bottom: 24px
 		color: #fff
+		margin-bottom: 0
+		&:not(:last-child)
+			margin-bottom: 24px
 	.simple-bar
 		max-height: 422px
 	+media-breakpoint-up(sm)
@@ -808,8 +817,6 @@ img
 		text-align: center
 		position: relative
 		margin-top: 60px
-		+media-breakpoint-up(sm)
-			margin-top: 0
 		+media-breakpoint-up(xl)
 			top: 100px
 	/* .how__btn-arrow */
@@ -1252,6 +1259,10 @@ img
 		max-height: 0
 		overflow: hidden
 		transition: max-height .35s ease-out, padding .35s ease-out
+		p
+			margin-bottom: 0
+		p:not(:last-child)
+			margin-bottom: 15px
 
 .murchatos
 	position: relative
