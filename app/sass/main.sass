@@ -238,6 +238,13 @@ img
 		clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 90px), 50% 100%, 0 calc(100% - 90px))
 	&_fiolet
 		background-color: $fiolet
+	&_predictions-cat
+		// background-image: url('../images/dest/stars_prediction_cat.png')
+		// background-color: $yellow
+		// background-repeat: no-repeat
+		// background-position: center
+		background: url(../images/dest/stars_prediction_cat.png) left center no-repeat #FBC009
+		background-size: cover
 	&_first
 		padding-top: 0
 		margin-top: 0
@@ -325,8 +332,11 @@ img
 		clip-path: none
 		padding-top: 160px
 		clip-path: polygon(0 0,100% 0,100% 100%,50% 100%,0 100%)
+		+media-breakpoint-up(lg)
+			min-height: 960px
+			height: 100vh
 		+media-breakpoint-up(xl)
-			padding-top: 190px
+			padding-top: 160px
 			padding-bottom: 100px
 
 .container
@@ -595,8 +605,12 @@ img
 	&_white
 		color: #fff
 	&_bold
-		font-size: 22px
+		font-size: 14px
 		font-weight: 700
+		+media-breakpoint-up(sm)
+			font-size: 18px
+		+media-breakpoint-up(xl)
+			font-size: 22px
 
 .tab-content
 	// display: none
@@ -608,6 +622,69 @@ img
 		opacity: 1
 		position: relative
 		z-index: 1
+
+.predictions
+	position: relative
+	padding-bottom: 90px
+	+media-breakpoint-up(lg)
+		padding-bottom: 0
+	&_cat
+		.predictions__row
+			flex-direction: row-reverse
+	/* .predictions__row */
+	&__row
+		+media-breakpoint-up(lg)
+			display: flex
+			align-items: flex-end
+			margin: 0 -12px
+	/* .predictions__left */
+	&__left
+		+media-breakpoint-up(lg)
+			padding: 0 12px
+			flex: 0 0 41.66%
+			min-width: 1px
+	/* .predictions__right */
+	&__right
+		+media-breakpoint-up(lg)
+			padding: 0 12px
+			flex: 0 0 58.33%
+			min-width: 1px
+	/* .predictions__image */
+	&__image
+
+		+media-breakpoint-up(lg)
+			position: absolute
+			bottom: -30px
+			z-index: -1
+			width: 530px
+	/* .predictions__btn */
+	&__btn
+		position: absolute
+		bottom: 0
+		left: 0
+		padding: 16px 25px
+		+media-breakpoint-up(lg)
+			position: initial
+	/* .predictions__title */
+	&__title
+		color: #FFF
+		font-family: GothamPro
+		font-size: 18px
+		font-weight: 700
+		line-height: 28px
+		margin-bottom: 10px
+		text-align: center
+		+media-breakpoint-up(sm)
+			font-size: 24px
+			line-height: 36px
+		+media-breakpoint-up(md)
+			font-size: 30px
+			line-height: 40px
+		+media-breakpoint-up(lg)
+			margin-bottom: 240px
+		+media-breakpoint-up(xl)
+			font-size: 40px
+			line-height: 60px
 
 .heroes
 	/* .heroes__btn-row */
@@ -718,9 +795,53 @@ img
 			color: #fff
 	&_page
 		border: 1px dashed #fff
+		position: relative
+		.triangle
+			width: 0
+			height: 0
+			display: block
+			position: absolute
+			top: -7px
+			left: calc(50% - 7.5px)
+			border-bottom: 16px solid #fff
+			border-left: 15px solid transparent
+			transform: rotate(225deg)
+			&:before
+				content: ''
+				width: 15px
+				display: block
+				position: absolute
+				top: 7.5px
+				left: -7.5px
+				border-bottom: 1px solid #fff
+				transform: rotate(90deg)
+			&:after
+				content: ''
+				width: 15px
+				display: block
+				position: absolute
+				top: 15px
+				left: -15px
+				border-top: 1px solid #fff
+			+media-breakpoint-up(lg)
+				top: 40px
+				left: -7px
+				transform: rotate(135deg)
+		.triangle_cat
+			border-bottom: 15px solid #fff
+			+media-breakpoint-up(lg)
+				left: auto
+				right: -7px
+				transform: rotate(-45deg)
 		.simple-bar
 			max-height: 247px
 			min-height: 247px
+			font-size: 18px
+			font-weight: 700
+			+media-breakpoint-up(sm)
+				font-size: 22px
+		p
+			color: $fiolet
 	&_yellow
 		background-color: $yellow
 
@@ -739,7 +860,7 @@ img
 			border-width: 8px
 			margin-top: 0
 		&:before
-			border-bottom-color: $fiolet
+			border-bottom-color: #fff
 			border-bottom-style: dashed
 			border-width: 9px
 			margin-left: -1px
@@ -756,7 +877,7 @@ img
 				border-right-color: #fff
 			&:before
 				border-bottom-color: transparent
-				border-right-color: $fiolet
+				border-right-color: #fff
 				margin-top: -1px
 				margin-left: auto
 		+media-breakpoint-up(xl)
@@ -790,24 +911,25 @@ img
 		position: absolute
 		z-index: -1
 		bottom: -10px
-		max-width: 145px
+		max-width: 195px
 		+media-breakpoint-up(sm)
 			max-width: 205px
-			bottom: -40px
+			bottom: -20px
 		+media-breakpoint-up(lg)
 			max-width: 255px
+			bottom: -40px
 		+media-breakpoint-up(xl)
 			max-width: 395px
 	/* .how__dog */
 	&__dog
-		left: calc(42% - 145px)
+		left: calc(42% - 195px)
 		+media-breakpoint-up(sm)
 			left: calc(42% - 255px)
 		+media-breakpoint-up(xl)
 			left: calc(42% - 395px)
 	/* .how__cat */
 	&__cat
-		right: calc(42% - 145px)
+		right: calc(42% - 195px)
 		+media-breakpoint-up(sm)
 			right: calc(42% - 255px)
 		+media-breakpoint-up(xl)

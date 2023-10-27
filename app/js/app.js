@@ -137,11 +137,10 @@ if (pickModal) {
 	let radio = pickModal.querySelectorAll('.pick__form-label-radio');
 	radio.forEach(el => {
 		el.addEventListener('change', () => {
-
+			pickModal.querySelector('.pick__form-input[name="sum"]').removeAttribute("style");
 			if (el.value === 'Другая сумма') {
 				pickModal.querySelector('.pick__form-input[name="sum"]').disabled = false;
 				pickModal.querySelector('.pick__form-input[name="sum"]').value = '';
-				console.log(pickModal.querySelector('.pick__form-input[name="sum"]').value);
 				pickModal.querySelector('.pick__form-input[name="sum"]').placeholder = 'от 300 руб.';
 			} else {
 				pickModal.querySelector('.pick__form-input[name="sum"]').disabled = true;
@@ -272,6 +271,8 @@ if (form) {
 					for (let el in data) {
 						if (el !== 'for') {
 							document.querySelector(`input[name=${el}]`).style.borderColor = "#da4c4c";
+						} else if (el !== 'sum') {
+							event.currentTarget.querySelector('input[name="sum"]').setAttribute('disabled', '');
 						} else {
 							console.log(data.for);
 						}
@@ -279,7 +280,6 @@ if (form) {
 				}
 
 			});
-		event.currentTarget.querySelector('input[name="sum"]').setAttribute('disabled', '');
 
 	});
 }
