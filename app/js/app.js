@@ -24,13 +24,37 @@ let params = {
 	}
 }
 
-let starsWhite = document.querySelectorAll('.stars_white');
-starsWhite.forEach(starElem => {
-	createStars(starElem, params.boxShadowColor.white);
+// let starsWhite = document.querySelectorAll('.stars_white');
+// starsWhite.forEach(starElem => {
+// 	createStars(starElem, params.boxShadowColor.white);
+// });
+// let starsYellow = document.querySelectorAll('.stars_yellow');
+// starsYellow.forEach(starElem => {
+// 	createStars(starElem, params.boxShadowColor.yellow);
+// });
+
+
+const observerStars = new IntersectionObserver((entries) => {
+	entries.forEach((entry) => {
+		if (entry.isIntersecting) {
+			if (entry.target.classList.contains('stars_yellow')) {
+				createStars(entry.target, params.boxShadowColor.yellow);
+			} else {
+				createStars(entry.target, params.boxShadowColor.white);
+			}
+		} else {
+			entry.target.querySelectorAll('.stars__item').forEach(el => el.remove());
+		}
+	});
+}, {
+	threshold: 0.1
 });
-let starsYellow = document.querySelectorAll('.stars_yellow');
-starsYellow.forEach(starElem => {
-	createStars(starElem, params.boxShadowColor.yellow);
+
+document.querySelectorAll('.stars_white').forEach(section => {
+	observerStars.observe(section);
+});
+document.querySelectorAll('.stars_yellow').forEach(section => {
+	observerStars.observe(section);
 });
 
 function randomBetween(a, b) {
@@ -66,9 +90,25 @@ let paramsSmoke = {
 	}
 }
 
-let smoke = document.querySelectorAll('.smoke');
-smoke.forEach(smokeElem => {
-	createSmoke(smokeElem);
+// let smoke = document.querySelectorAll('.smoke');
+// smoke.forEach(smokeElem => {
+// 	createSmoke(smokeElem);
+// });
+
+const observerSmoke = new IntersectionObserver((entries) => {
+	entries.forEach((entry) => {
+		if (entry.isIntersecting) {
+			createSmoke(entry.target);
+		} else {
+			entry.target.querySelectorAll('.smoke__item').forEach(el => el.remove());
+		}
+	});
+}, {
+	threshold: 0.1
+});
+
+document.querySelectorAll('.smoke').forEach(section => {
+	observerSmoke.observe(section);
 });
 
 function createSmoke(block) {
