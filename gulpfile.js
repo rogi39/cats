@@ -14,6 +14,7 @@ let paths = {
 			baseDir + '/libs/simplebar/simplebar.min.js',
 			baseDir + '/libs/lazy/lazyload.min.js',
 			baseDir + '/libs/lg/js/lightgallery.min.js',
+			baseDir + '/libs/tiny/tiny-slider.js',
 			baseDir + '/js/app.js' // app.js. Always at the end
 		],
 		dest: baseDir + '/js',

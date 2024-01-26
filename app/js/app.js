@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		el.style.zIndex = length;
 		length--;
 	});
+
+	if (document.getElementById("modal-video") != null && document.getElementById("modal-video").querySelector('iframe')) {
+		document.getElementById("modal-video").querySelector('iframe').dataset.temp = document.getElementById("modal-video").querySelector('iframe').src;
+		document.getElementById("modal-video").querySelector('iframe').src = '';
+	}
 });
 
 let params = {
@@ -241,10 +246,18 @@ if (openVideoId) {
 
 function openVideo() {
 	var modalCallback = document.getElementById("modal-video");
+	if (document.getElementById("modal-video").querySelector('iframe')) {
+		modalCallback.querySelector('iframe').src = document.getElementById("modal-video").querySelector('iframe').dataset.temp;
+		document.getElementById("modal-video").querySelector('iframe').dataset.temp = '';
+	}
 	let close = modalCallback.querySelector(".modal-content__close");
 	fadeIn(modalCallback, 300, 'flex');
 	close.onclick = function () {
 		fadeOut(modalCallback, 300);
+		if (document.getElementById("modal-video").querySelector('iframe')) {
+			document.getElementById("modal-video").querySelector('iframe').dataset.temp = document.getElementById("modal-video").querySelector('iframe').src;
+			document.getElementById("modal-video").querySelector('iframe').src = '';
+		}
 	}
 }
 
@@ -289,6 +302,10 @@ const form = document.querySelector('.pick__form');
 if (form) {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault();
+		let btn = event.target.querySelector('button');
+		let btnText = btn.textContent;
+		btn.setAttribute('disabled', 'disabled');
+		btn.textContent = 'Загрузка...';
 		event.currentTarget.querySelector('input[name="sum"]').removeAttribute('disabled');
 		let formData = new FormData(form);
 		formData.append("action", "pay_mixplat");
@@ -302,6 +319,8 @@ if (form) {
 					window.location.href = data.redirect_url;
 					// window.open(data.redirect_url, '_blank');
 				} else {
+					btn.textContent = btnText;
+					btn.removeAttribute('disabled');
 					let inputs = form.querySelectorAll('input');
 					inputs.forEach(el => {
 						el.addEventListener('input', () => {
@@ -351,4 +370,47 @@ function autocompleteInput(event) {
 
 function dayToSec(days) {
 	return days * 24 * 60 * 60;
+}
+
+
+var partnerSlider = document.getElementsByClassName("partners__slider");
+
+if (partnerSlider) {
+	for (let i = 0; i < partnerSlider.length; i++) {
+		let slider = partnerSlider[i];
+		slider = tns({
+			autoHeight: true,
+			loop: true,
+			// rewind: true,
+			mouseDrag: true,
+			container: slider,
+			nav: true,
+			navPosition: 'bottom',
+			controls: false,
+			controlsContainer: slider.nextElementSibling,
+			// autoplay: true,
+			// autoplayButtonOutput: false
+			gutter: 12,
+			responsive: {
+				0: {
+					items: 1,
+				},
+				576: {
+					nav: false,
+					items: 2,
+					controls: true
+				},
+				768: {
+					items: 3,
+				},
+				992: {
+					items: 4,
+				},
+				1200: {
+					items: 5,
+					gutter: 24,
+				},
+			}
+		});
+	}
 }

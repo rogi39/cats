@@ -251,7 +251,7 @@ img
 		padding-bottom: 0
 		// background: url('../images/bg.svg') center -1px no-repeat
 		// background-size: auto
-		background: url(../images/dest/stars_first.png) center no-repeat, url('../images/bg.svg') center -1px no-repeat
+		background: url(../images/dest/stars_first.png) center no-repeat, url('../images/bg2.svg') center -1px no-repeat
 		background-size: cover, auto
 		&:after
 			content: ''
@@ -333,11 +333,11 @@ img
 		padding-top: 160px
 		clip-path: polygon(0 0,100% 0,100% 100%,50% 100%,0 100%)
 		+media-breakpoint-up(lg)
-			min-height: 960px
-			height: 100vh
+			// min-height: 960px
+			// height: 100vh
 		+media-breakpoint-up(xl)
 			padding-top: 160px
-			padding-bottom: 100px
+			padding-bottom: 160px
 
 .container
 	padding: 0 10px
@@ -380,7 +380,7 @@ img
 		align-items: center
 	/* .first__block */
 	&__block
-		max-width: 732px
+		max-width: 782px
 		text-align: center
 		position: relative
 		margin-top: 160px
@@ -388,22 +388,24 @@ img
 			margin: 0 auto
 	/* .first__title */
 	&__title
-		font-family: Seymour One
-		font-size: 26px
+		font-family: ThickerDestroy
+		letter-spacing: 5px
+		font-size: 36px
 		color: $fiolet
 		margin-bottom: 5px
 		span
 			color: $yellow
 			margin-left: 10px
 		+media-breakpoint-up(sm)
+			letter-spacing: 10px
 			font-size: 48px
 			margin-bottom: 24px
 			span
 				margin-left: 0
 		+media-breakpoint-up(md)
-			font-size: 60px
-		+media-breakpoint-up(xl)
 			font-size: 80px
+		+media-breakpoint-up(xl)
+			font-size: 100px
 	/* .first__question */
 	&__question
 		text-align: center
@@ -485,8 +487,9 @@ img
 
 .btn
 	color: #fff
-	font-family: Seymour One, sans-serif
-	padding: 6px 10px
+	// font-family: ThickerDestroy, sans-serif
+	font-family: GothamPro, sans-serif
+	padding: 10px
 	border-radius: 40px
 	display: inline-flex
 	align-items: center
@@ -498,7 +501,7 @@ img
 		color: #fff
 		text-decoration: none
 	+media-breakpoint-up(sm)
-		padding: 10px 30px
+		padding: 14px 30px
 	+media-breakpoint-up(md)
 		padding: 16px 40px
 		min-width: 235px
@@ -555,13 +558,24 @@ img
 		padding: 14px 40px
 	&_w100
 		width: 100%
+	&_company
+		&:not(:last-child)
+			margin-bottom: 20px
+		+media-breakpoint-up(sm)
+			&:not(:last-child)
+				margin-bottom: 0
+				margin-right: 70px
 	/* .btn__span */
 	&__span
-		font-size: 12px
-		+media-breakpoint-up(sm)
-			font-size: 14px
+		font-size: 14px
+		line-height: 14px
+		font-weight: 700
 		+media-breakpoint-up(md)
 			font-size: 16px
+			line-height: 16px
+	&__span_company
+		font-size: 18px
+		line-height: 18px
 
 .btn-page
 	text-align: center
@@ -572,27 +586,33 @@ img
 		margin-top: 0
 
 .title
-	font-size: 22px
+	font-size: 32px
+	line-height: 42px
 	color: #fff
-	font-family: Seymour One
+	font-family: ThickerDestroy
+	letter-spacing: 5px
 	margin-bottom: 16px
 	text-align: center
 	+media-breakpoint-up(sm)
-		font-size: 24px
+		font-size: 34px
+		line-height: 44px
 	+media-breakpoint-up(md)
-		font-size: 28px
+		font-size: 38px
+		line-height: 48px
 		margin-bottom: 24px
 	+media-breakpoint-up(lg)
-		font-size: 32px
+		font-size: 42px
+		line-height: 52px
 	+media-breakpoint-up(xl)
-		font-size: 40px
+		font-size: 50px
+		line-height: 62px
 	&_fiolet
 		color: $fiolet
 	&_width
-		max-width: 633px
-		margin-left: auto
-		margin-right: auto
-		line-height: 1.4
+		// max-width: 763px
+		// margin-left: auto
+		// margin-right: auto
+		// line-height: 1.4
 
 .subtitle
 	margin-bottom: 48px
@@ -611,6 +631,12 @@ img
 			font-size: 18px
 		+media-breakpoint-up(xl)
 			font-size: 22px
+	&_prediction
+		margin-bottom: 0
+		margin-top: 60px
+		font-size: 22px
+		+media-breakpoint-up(sm)
+			margin-top: 100px
 
 .tab-content
 	// display: none
@@ -625,7 +651,7 @@ img
 
 .predictions
 	position: relative
-	padding-bottom: 90px
+	padding-bottom: 160px
 	+media-breakpoint-up(lg)
 		padding-bottom: 0
 	&_cat
@@ -637,6 +663,8 @@ img
 			display: flex
 			align-items: flex-end
 			margin: 0 -12px
+	&__row_404
+		align-items: center
 	/* .predictions__left */
 	&__left
 		+media-breakpoint-up(lg)
@@ -651,12 +679,13 @@ img
 			min-width: 1px
 	/* .predictions__image */
 	&__image
-
 		+media-breakpoint-up(lg)
 			position: absolute
 			bottom: -30px
 			z-index: -1
 			width: 530px
+	&__image_404
+		position: initial
 	/* .predictions__btn */
 	&__btn
 		position: absolute
@@ -665,23 +694,27 @@ img
 		padding: 16px 25px
 		+media-breakpoint-up(lg)
 			position: initial
+	&__btn_sticker
+		margin-bottom: 10px
+		bottom: 60px
+
 	/* .predictions__title */
 	&__title
 		color: #FFF
-		font-family: Seymour One,sans-serif
-		font-size: 24px
+		font-family: ThickerDestroy,sans-serif
+		font-size: 34px
 		font-weight: 700
-		line-height: 36px
+		line-height: 46px
 		margin-bottom: 10px
 		text-align: center
 		+media-breakpoint-up(md)
-			font-size: 30px
-			line-height: 40px
+			font-size: 40px
+			line-height: 50px
 		+media-breakpoint-up(lg)
 			margin-bottom: 240px
 		+media-breakpoint-up(xl)
-			font-size: 40px
-			line-height: 60px
+			font-size: 50px
+			line-height: 70px
 
 .heroes
 	/* .heroes__btn-row */
@@ -793,6 +826,8 @@ img
 	&_page
 		border: 1px dashed #fff
 		position: relative
+		+media-breakpoint-up(lg)
+			bottom: 115px
 		.triangle
 			width: 0
 			height: 0
@@ -834,7 +869,7 @@ img
 			max-height: 247px
 			min-height: 247px
 			font-size: 18px
-			font-weight: 700
+			// font-weight: 700
 			+media-breakpoint-up(sm)
 				font-size: 22px
 		p
@@ -966,6 +1001,21 @@ img
 			margin-top: 150px
 		+media-breakpoint-up(wxp)
 			margin-top: 200px
+	&_company
+		.how-star__text
+			color: #000
+	&_company-2, &_company-4
+		+media-breakpoint-up(md)
+			margin-top: 40px
+		+media-breakpoint-up(lg)
+			margin-top: 80px
+	&_company-1, &_company-5
+		+media-breakpoint-up(md)
+			margin-top: 80px
+		+media-breakpoint-up(lg)
+			margin-top: 190px
+		+media-breakpoint-up(wxp)
+			margin-top: 240px
 	/* .how-star__step */
 	&__step
 		background-image: url('../images/dest/step.svg')
@@ -976,7 +1026,7 @@ img
 		align-items: center
 		justify-content: center
 		color: #fff
-		font-family: Seymour One
+		font-weight: 700
 		font-size: 20px
 		line-height: 24px
 		text-align: center
@@ -993,16 +1043,19 @@ img
 			margin-bottom: 32px
 	/* .how-star__text */
 	&__text
-		font-size: 14px
-		line-height: 26px
+		font-size: 16px
+		line-height: 1.5
 		color: #fff
 		font-weight: 700
 		text-align: center
-		+media-breakpoint-up(sm)
+	/* .how-star__text-p */
+	&__text-p
+		text-align: center
+		font-size: 14px
+		+media-breakpoint-up(lg)
 			font-size: 16px
-		+media-breakpoint-up(xl)
-			font-size: 18px
-			line-height: 28px
+		p
+			margin-bottom: 0px
 
 .team
 	+media-breakpoint-up(sm)
@@ -1061,7 +1114,7 @@ img
 
 	/* .team__item-image */
 	&__item-image
-
+		max-width: 140px
 	/* .team__item-right */
 	&__item-right
 		text-align: center
@@ -1132,12 +1185,13 @@ img
 			padding: 48px
 	/* .pick__modal-title */
 	&__modal-title
-		font-family: Seymour One
 		text-align: left
 		margin-bottom: 24px
 		font-size: 16px
+		font-weight: 700
 		max-width: 210px
 		+media-breakpoint-up(sm)
+			font-size: 18px
 			text-align: center
 			max-width: initial
 	/* .pick__form */
@@ -1260,12 +1314,12 @@ img
 		background: url('../images/dest/volume_bg.png') $yellow
 		bottom: 0
 		left: 0
-		border-top-left-radius: 24px
-		border-top-right-radius: 24px
+		// border-top-left-radius: 24px
+		// border-top-right-radius: 24px
 		outline: 1px dashed $fiolet
 	/* .pick-item__volume-target */
 	&__volume-target
-		font-family: Seymour One
+		font-weight: 700
 		color: #fff
 		max-width: 126px
 		margin-bottom: 16px
@@ -1275,12 +1329,40 @@ img
 	&__volume-total
 		background-color: #fff
 		color: #000
-		padding: 13px 15px
+		padding: 10px
 		border-radius: 30px
 		align-self: start
+		+media-breakpoint-up(sm)
+			padding: 13px 15px
 	/* .pick-item__btn */
 	&__btn
 		align-self: start
+		position: absolute
+		top: calc(60% - 32px)
+		+media-breakpoint-up(sm)
+			top: calc(50% - 32px)
+	&__btn_left
+		left: 50px
+		+media-breakpoint-up(sm)
+			left: 80px
+		+media-breakpoint-up(lg)
+			left: auto
+			right: -20px
+		+media-breakpoint-up(xl)
+			right: -120px
+		+media-breakpoint-up(wxp)
+			right: -200px
+	&__btn_right
+		right: 50px
+		+media-breakpoint-up(sm)
+			right: 80px
+		+media-breakpoint-up(lg)
+			right: auto
+			left: 0
+		+media-breakpoint-up(xl)
+			left: -100px
+		+media-breakpoint-up(wxp)
+			left: -180px
 	/* .pick-item__img */
 	&__img
 		position: absolute
@@ -1333,7 +1415,7 @@ img
 		align-items: center
 		justify-content: center
 		color: #fff
-		font-family: Seymour One
+		font-family: ThickerDestroy
 		font-size: 20px
 		line-height: 24px
 		text-align: center
@@ -1390,8 +1472,9 @@ img
 		position: absolute
 		z-index: -1
 		left: calc(50% - 110px)
-		top: 170px
+		top: 16%
 		max-width: 220px
+		transform: scale(-1,1)
 		+media-breakpoint-up(sm)
 			left: calc(50% - 150px)
 			top: 140px
@@ -1403,7 +1486,7 @@ img
 			max-width: 360px
 			top: 270px
 		+media-breakpoint-up(xl)
-			max-width: initial
+			max-width: 330px
 			left: 3%
 			bottom: 200px
 			top: auto
@@ -1419,11 +1502,13 @@ img
 		display: flex
 		flex-direction: column
 		gap: 30px
+
 		+media-breakpoint-up(xl)
 			align-items: flex-end
 			position: relative
 			bottom: 100px
 			flex-direction: row
+			margin-top: 130px
 	/* .murchatos__left */
 	&__left
 		order: 1
@@ -1458,7 +1543,7 @@ img
 			display: block
 			gap: initial
 			flex: 0 0 328px
-			margin-bottom: 60px
+			// margin-bottom: 60px
 	/* .murchatos__star-item */
 	&__star-item
 		display: flex
@@ -1477,17 +1562,17 @@ img
 		align-items: center
 		justify-content: center
 		color: #fff
-		font-family: Seymour One
+		font-family: ThickerDestroy
 		font-size: 20px
 		line-height: 24px
 		text-align: center
 		background-size: 100px
 		margin-right: 16px
 		+media-breakpoint-up(sm)
-			background-size: auto
-			height: 134px
-			width: 118px
-			flex: 0 0 118px
+			background-size: contain
+			height: 124px
+			width: 108px
+			flex: 0 0 108px
 			font-size: 24px
 			line-height: 28px
 		+media-breakpoint-up(xl)
@@ -1574,21 +1659,207 @@ img
 			right: 10px
 
 .partners
-	/* .partners__row */
-	&__row
-		display: flex
-		justify-content: center
-		flex-wrap: wrap
-		align-items: center
-		gap: 10px
-		flex-direction: column
+	margin-bottom: 50px
+	+media-breakpoint-up(sm)
+		margin-bottom: 100px
+	/* .partners__title */
+	&__title
+		text-align: center
+		font-family: GothamPro
+		font-size: 20px
+		font-weight: 700
+		line-height: 48px
+		margin-bottom: 24px
+	&__title_fiolet
+		color: $fiolet
+	&__title_yellow
+		color: $yellow
+	/* .partners__slider-block */
+	&__slider-block
+		margin-bottom: 24px
+		position: relative
 		+media-breakpoint-up(sm)
-			flex-direction: row
-			gap: 30px
-	/* .partners__col */
-	&__col
+			margin-bottom: 48px
+		.tns-nav
+			display: flex
+			justify-content: center
+			flex-wrap: wrap
+			margin-top: 30px
+			button
+				height: 10px
+				width: 10px
+				border: none
+				background-color: #fff
+				border: 1px solid $yellow
+				border-radius: 50%
+				padding: 0
+				margin: 0
+				margin-right: 7px
+				margin-bottom: 7px
+				position: relative
+				z-index: 1
+				&.tns-nav-active
+					background-color: $yellow
+	&__slider-block_fiolet
+		.tns-nav
+			button
+				border-color: $fiolet
+				&.tns-nav-active
+					background-color: $fiolet
+	/* .partners__slider */
+	&__slider
+
+	/* .partners__slider-item */
+	&__slider-item
+
 	/* .partners__item */
 	&__item
+		border-radius: 10px
+		border: 1px dashed $yellow
+		padding: 14px 8px
+		text-align: center
+		user-select: none
+		+media-breakpoint-up(sm)
+			padding: 24px 14px
+	&__item_fiolet
+		border-color: $fiolet
+	/* .partners__item-img */
+	&__item-img
+		margin-bottom: 14px
+		// min-height: 80px
+		max-height: 260px
+		object-fit: contain
+		+media-breakpoint-up(sm)
+			// min-height: 120px
+			// max-height: 120px
+	/* .partners__item-title */
+	&__item-title
+		text-align: center
+		font-family: GothamPro
+		font-size: 16px
+		font-weight: 400
+		line-height: 24px
+		margin-bottom: 14px
+		min-height: 48px
+		+media-breakpoint-up(sm)
+			max-height: 48px
+			overflow: hidden
+	/* .partners__item-text */
+	&__item-text
+		color: #585858
+		text-align: center
+		font-family: GothamPro
+		font-size: 14px
+		font-weight: 400
+		line-height: 21px
+		min-height: 63px
+		+media-breakpoint-up(sm)
+			max-height: 63px
+			overflow: hidden
+	/* .partners__slider-btns */
+	&__slider-btns
+
+	/* .partners__slider-btn-svg */
+	&__slider-btn-svg
+		fill: #fff
+		transition: fill .35s ease-out
+	/* .partners__slider-btn */
+	&__slider-btn
+		background-color: $yellow
+		border: 1px solid $yellow
+		border-radius: 50%
+		height: 42px
+		width: 42px
+		display: flex
+		align-items: center
+		justify-content: center
+		position: absolute
+		top: calc(50% - 21px)
+		cursor: pointer
+		transition: background-color .35s ease-out
+		&:hover
+			background-color: transparent
+			.partners__slider-btn-svg
+				fill: $yellow
+	&__slider-btn_prev
+		left: -10px
+		+media-breakpoint-up(sm)
+			left: -15px
+		+media-breakpoint-up(wxp)
+			left: -57px
+		+media-breakpoint-up(wxpp)
+			left: -87px
+	&__slider-btn_next
+		right: -10px
+		+media-breakpoint-up(sm)
+			right: -15px
+		+media-breakpoint-up(wxp)
+			right: -57px
+		+media-breakpoint-up(wxpp)
+			right: -87px
+	&__slider-btn_fiolet
+		background-color: $fiolet
+		border-color: $fiolet
+		&:hover
+			.partners__slider-btn-svg
+				fill: $fiolet
+
+.how-company
+	/* .how-company__row */
+	&__row
+		+media-breakpoint-up(sm)
+			margin: 0 -8px
+			display: flex
+			flex-wrap: wrap
+			justify-content: center
+		+media-breakpoint-up(md)
+			flex-wrap: nowrap
+	/* .how-company__col */
+	&__col
+		margin-bottom: 16px
+		+media-breakpoint-up(sm)
+			margin-bottom: 0
+			flex: 0 0 50%
+			padding: 0 8px
+		+media-breakpoint-up(md)
+			flex: 0 0 20%
+	&__col_prediction
+		margin-bottom: 16px
+		+media-breakpoint-up(sm)
+			margin-bottom: 0
+			flex: 0 0 50%
+			padding: 0 8px
+		+media-breakpoint-up(md)
+			flex: 0 0 33.3333%
+		+media-breakpoint-up(xl)
+			flex: 0 0 25%
+	/* .how-company__btn-row*/
+	&__btn-row
+		text-align: center
+		position: relative
+		// margin-top: 60px
+		+media-breakpoint-up(sm)
+			margin-top: 110px
+		+media-breakpoint-up(md)
+			margin-top: 40px
+		+media-breakpoint-up(lg)
+			margin-top: 0
+		+media-breakpoint-up(xl)
+			// top: 100px
+	/* .how-company__btn-arrow */
+	&__btn-arrow
+		position: absolute
+		width: 105px
+		display: none
+		+media-breakpoint-up(sm)
+			display: block
+	&__btn-arrow_1
+		top: -110px
+		left: calc(50% - 150px)
+		transform: rotate(65deg)
+	&__btn-arrow_2
+		top: -110px
+		right: calc(50% - 140px)
 
 .footer
 	/* .footer__top */
